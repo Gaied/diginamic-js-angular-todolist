@@ -1,0 +1,31 @@
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Update Todo</h1>
+        <p class="lead">Utiliser le formulaire suivant afin de modifier une tâche
+        </p>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-6 mx-auto">
+        <h2 class="text-center">Update Todo</h2>
+        <div class="card mt-3">
+            <div class="card-body">
+              <form [formGroup]="todoForm" (ngSubmit)="edit(todoForm.value)">
+                <div class="form-group">
+                  <label class="col-md-4">Label </label>
+                  <input type="text" class="form-control" formControlName="label" />
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary col-md-4" [disabled]="todoForm.invalid">Update</button>
+                  <a [routerLink]="['/']">
+                   
+                  </a>
+                </div>
+              </form>
+            </div>
+        </div>
+    </div>
+  </div>
+
+ 
