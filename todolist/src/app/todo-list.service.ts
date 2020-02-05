@@ -1,33 +1,40 @@
 import { Injectable } from '@angular/core';
-import { Todo } from './todo.model';
-import {Todos} from './listodo';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Todo, Todos } from './todo.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoListService {
 
-  listodo : Todo[];
+  listodo : Todos;
 
-  constructor(private r: ActivatedRoute, private router: Router) { }
+  constructor() {
+    this.listodo= new Array();
+   }
 
-getAll () : Todo[] {
-  return Todos;
+getAll () {
+  return this.listodo;
 }
+
 get(id : number) {
-
+let todo: Todo;
+this.listodo.filter(x=>{
+  if (x.id===id) {
+    todo=x;
+  } 
+});
+return todo;
 }
-getNewId() {
 
-}
 add(todo : Todo) {
-
+this.listodo.push(todo);
 }
+
 edit(todo : Todo){
-
+this.get(todo.id).label= todo.label;
 }
-delete(id) {
-  this.listodo = this.listodo.filter(obj => obj !== id)
+
+delete(id : number) {
+  this.listodo.splice(this.listodo.indexOf(this.get(id)),1);
 }
 }
