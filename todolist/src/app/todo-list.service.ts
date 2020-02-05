@@ -31,7 +31,19 @@ this.listodo.push(todo);
 }
 
 edit(todo : Todo){
+  let newid: number = this.getNewId();
+    todo.id = newid;
 this.get(todo.id).label= todo.label;
+}
+
+getNewId() {
+  let n: number = 0;
+  this.listodo.forEach(element => {
+    if (element.id > n) {
+      n = element.id;
+    }
+  });
+  return n + 1;
 }
 
 delete(id : number) {
